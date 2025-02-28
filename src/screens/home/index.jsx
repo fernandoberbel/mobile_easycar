@@ -9,13 +9,12 @@ import {
 import icons from "../../constants/icons.js";
 import { styles } from "./styles.js";
 
-export default function Home() {
+export default function Home(props) {
   function OpenPassenger() {
-    Alert.alert("Abrir tela de passageiros...");
-    navi;
+    props.navigation.navigate("passenger");
   }
   function OpenRide() {
-    Alert.alert("Abrir tela de motoristas...");
+    props.navigation.navigate("driver");
   }
 
   return (
