@@ -1,18 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
 import { json_rides } from "../../constants/dados.js";
 import icons from "../../constants/icons";
 
 export default function Driver(props) {
+  const userId = 2;
+
+  const [rides, setRides] = useState([]);
+
   function ClickRide(id) {
-    props.navigation.navigate("ride");
+    props.navigation.navigate("ride", {
+      rideId: id,
+      userId: userId,
+    });
   }
+
+  async function RequestRides() {
+    // Acessar API em busca das caronas
+    setRides(json_rides);
+  }
+
+  useEffect(() => {
+    RequestRides();
+  }, []);
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={json_rides}
+        data={rides}
         keyExtractor={(ride) => ride.ride_id.toString()}
         showsVerticalScrollIndicator={false}
         renderItem={({ item }) => {
