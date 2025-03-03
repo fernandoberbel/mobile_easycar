@@ -30,4 +30,9 @@ export const styles = StyleSheet.create({
     marginTop: 4,
     fontSize: 14,
   },
+  loading: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
